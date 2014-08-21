@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>Untitled Document</title>
+	</head>
+	<body>
+
+<h1>Pi Approximation</h1>
+A <a href="http://mathworld.wolfram.com/MonteCarloMethod.html">Monte Carlo method</a> of approximating pi.
+<br /><br />
+<form name="form" accept-charset="utf-8">
+Number of iterations: <input type="text" value="100" width="100" name="upper"><br />
+<input type="button" width="50" value="Go" onclick="go()">
+</form>
+
+<script type="text/javascript">
+function go(){
+	var x = [];
+	var y = [];
+	var d = [];
+//Iterate over n.
+for (var i=0; i<100; i++) {
+	x[i] = Math.random();
+	y[i] = Math.random();
+	// Use pythagorean theorem to calculate euclidean distance to the origin
+	d[i] = Math.sqrt(Math.pow(x[i],2)+Math.pow(y[i],2));
+	//Test if this distance is inside the radius of circle, then count the total number inside and total number outside.
+	if (d[i]<r) {
+		inside++;
+	} else {
+		outside++;
+	};
+};
+//Area of quarter-circle is (pi*r^2)/4 ; area of square is r^2.
+//Since the total number of points inside each shape approximate its area, we can divide the areas of two to solve for pi.
+//(Note that the number of points inside the square includes the number of points inside the circle.)
+var p = 4*inside/(inside+ouside);
+//Done.
+document.write("The approximate value of pi is: " + p);
+};
+</script><noscript>This document requires you to enable JavaScript in order to be viewed properly.</noscript>
+<br /><span style="font-size:75%;">Created by <a href="http://www.kortaggio.com">Kortaggio</a></span>
+
+	</body>
+</html>
